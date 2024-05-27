@@ -1,0 +1,9 @@
+DEBUG = True
+
+#Database
+ENGINE = 'django.db.backends.postgresql'
+DB_NAME = ''
+DB_USER = 'postgres'
+DB_USER_PASSWORD = ''
+DB_HOST = 'localhost'
+DB_PORT = '5432'
