@@ -1,0 +1,107 @@
+{% load static %}
+<div id="template_backgound" class="d-flex justify-content-center align-content-center flex-wrap" style="width: 100vw; height: 100vh;">
+    <div id="template_form_background" class="d-flex justify-content-center flex-wrap" style="background-color: #211426; min-width: 700px; min-height: 800px; max-width: 800px; max-height: 900px; border-radius: 16px; box-shadow: 3px 3px 3px 3px #F25CCA;">
+        <div class="conteiner text-center mt-3" style="width: 90%; height: 95%;">
+            <div class="row d-flex justify-content-center">
+                <label style="font-size: 35px; color: #D9814E;">Edit Event</label>
+            </div>
+            <div class="row mt-5">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-12 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="name_field" style="color: #D9814E;">Nome do evento</label>  
+                        <input type="text" class="form-control" id="name_field" value={{event.name}}>
+                    </div>
+                </div>
+            </div>   
+
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center flex-wrap">
+                    <div class="form-outline col-sm-12 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="description_field" style="color: #D9814E;">Descricao</label>  
+                        <textarea class="form-control" cols="12" id="description_field">{{event.description}}</textarea>
+                    </div>
+                </div>
+
+            </div>   
+
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-9 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="initial_date_form" style="color: #D9814E;">Data inicial do evento</label>  
+                        <input type="date" class="form-control" id="initial_date_form" value={{event.initial_date}}>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-6 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="final_date_form" style="color: #D9814E;">Data final do evento</label>  
+                        <input type="date" class="form-control" id="final_date_form" value={{event.final_date}}>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-6 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="valor_form" style="color: #D9814E;">Valor do ingreco</label>  
+                        <input type="number" class="form-control" id="valor_form" value={{event.enrollment_value}}>
+                    </div>
+                </div>
+            </div>   
+
+            <div class="row mt-5">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-6 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="initial_hour_form" style="color: #D9814E;">Hora inicial diaria do evento</label>  
+                        <input type="text" class="form-control" id="initial_hour_form" value={{event.initial_hour}}>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-6 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="final_hour_form" style="color: #D9814E;">Hora final diaria do evento</label>  
+                        <input type="text" class="form-control" id="final_hour_form" value={{event.final_hour}}>
+                    </div>
+                </div>
+            </div>   
+
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-6 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="min_participants_form" style="color: #D9814E;">Numero minimo de participantes</label>  
+                        <input type="number" class="form-control" id="min_participants_form" value={{event.min_participants}}>
+                    </div>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-6 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="max_participants_form" style="color: #D9814E;">Numero maximo de participantes</label>  
+                        <input type="number" class="form-control" id="max_participants_form" value={{event.max_participants}}>
+                    </div>
+                </div>
+            </div>   
+
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-6 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="loc_form" style="color: #D9814E;">Local do evento</label>  
+                        <input type="text" class="form-control" id="loc_form" value={{event.location}}>
+                    </div>
+                </div>
+            </div>  
+
+
+            <div class="row mt-5">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-9 col-md-9 d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary"
+                        style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 14px;" id="enterButton" onclick="history.back();">
+                            Back
+                        </button>
+                    </div>
+                    <div class="form-outline col-sm-9 col-md-9 d-flex justify-content-center">
+                        <button type="button" class="btn btn-success"
+                        style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 14px;" id="enterButton" onclick="edit_event({{event.id}});">
+                        Edit Event
+                        </button>
+                    </div>
+                </div>
+            </div>   
+
+        </div>
+    </div>
+</div>  

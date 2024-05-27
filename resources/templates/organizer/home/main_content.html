@@ -1,0 +1,80 @@
+{% load static %}
+<div id="template_backgound" style="height: 100vh;">
+    <div class="d-flex justify-content-end" style="width: 99vw;">
+        <a href="{% url 'organizer:user_edit'  %}">
+            <div class="col-md-auto">
+                <img class="mt-3 mr-3" src="{% static '/images/user.png' %}" style="border-radius: 50%; width: 50px;">
+            </div>
+        </a>
+    </div>
+    <div class="container pt-3">
+        <div class="row d-flex justify-content-end">
+            <div class="col-md-auto">
+                <button type="button" class="btn btn-outline-secondary btn-md btn-block" id="event_edit" onclick="to_form()">Edit Event</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-lg">
+        <div class="container-md">
+            <label style="color: #D9814E;">Event</label>
+        </div>
+        <div class="container-lg mt-2" style="border-radius: 16px; box-shadow: 3px 3px 3px 3px #F25CCA;"></div>
+        <div class="container-lg mt-5" style="background-color: #d4cdc1; border-radius: 6px;">
+            <div class="row">
+                <label class="d-flex justify-content-center align-items-center" style="font-size: 20px; color: #D9814E;"><b>Event Name</b></label>
+            </div>
+            <div class="row mb-4">
+                <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{ event.name }}</label>
+            </div>
+            <div class="row">
+                <label class="d-flex justify-content-center align-items-center" style="font-size: 20px; color: #D9814E;"><b>Description</b></label>
+            </div>
+            <div class="row mb-4">
+                <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{ event.description }}</label>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center mb-5">
+                <div class="col-md-auto">
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px; color: #D9814E;"><b>Initial date</b></label>
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{ event.initial_date }}</label>
+                </div>
+                <div class="col-md-auto">
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px; color: #D9814E;"><b>Final date</b></label>
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{event.final_date}}</label>
+                </div>
+                <div class="col-md-auto">
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px; color: #D9814E;"><b>Initial hour</b></label>
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{event.initial_hour}}</label>
+                </div>
+                <div class="col-md-auto">
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px; color: #D9814E;"><b>Final hour</b></label>
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{event.final_hour}}</label>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center mb-5">
+                <div class="col-md-auto">
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px; color: #D9814E;"><b>Minimum number of participants</b></label>
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{ event.min_participants }}</label>
+                </div>
+                <div class="col-md-auto">
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px; color: #D9814E;"><b>Maximun number of participants</b></label>
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{event.max_participants}}</label>
+                </div>
+                <div class="col-md-auto">
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px; color: #D9814E;"><b>Current number of participants</b></label>
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{event.num_participants}}</label>
+                </div>
+                <div class="col-md-auto">
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px; color: #D9814E;"><b>Enrollment Value</b></label>
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{event.enrollment_value}}</label>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center mb-5">
+                <div class="col-md-auto">
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px; color: #D9814E;"><b>Event Location</b></label>
+                    <label class="d-flex justify-content-center align-items-center" style="font-size: 18px;">{{event.location}}</label>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>  

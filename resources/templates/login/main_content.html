@@ -1,0 +1,72 @@
+{% load static %}
+<div id="template_backgound" class="d-flex justify-content-center align-content-center flex-wrap" style="width: 100vw; height: 100vh;">
+    <div id="template_form_background" class="d-flex justify-content-center flex-wrap" style="background-color: #211426; min-width: 250px; min-height: 700px; max-width: 500px; max-height: 1000px; border-radius: 16px; box-shadow: 3px 3px 3px 3px #F25CCA;">
+        <div class="conteiner text-center" style="width: 80%; height: 80%;">
+            <div class="row d-flex justify-content-center">
+                <img class="img-fluid" style="max-width: 200px; max-height: 200px;" src="{% static "images/SAE_nobackground.png" %}"/>
+                <label style="font-size: 20px; color: #D9814E;">S.A.E</label>
+                <label style="font-size: 14px; color: #D9814E;">Sistemas Academico de Eventos</label>
+            </div>
+            <div class="row mt-5">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-12 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="email_form" style="color: #D9814E;">Email</label>  
+                        <input
+                            class="form-control"
+                            id="email_form"
+                            type="text"
+                            placeholder="example@gmail.com"
+                            required
+                        />
+                    </div>
+                </div>
+            </div>   
+            <div class="row mt-4">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-12 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="passwd_form" style="color: #D9814E;">Password</label>
+                        <input
+                            class="form-control"
+                            id="passwd_form"
+                            type="password"
+                            placeholder="password"
+                            required
+                        />
+                    </div>
+                </div>
+            </div>   
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-9 col-md-12 d-flex justify-content-left">
+                        <button type="button" class="btn btn-link" style="font-size: 12px; color: #D9814E;">Forgot the password</button>
+                    </div>
+                </div>
+            </div>   
+            <div class="row mt-4">
+                <div class="col d-flex justify-content-center flex-wrap">
+                    <div class="form-outline col-sm-6 col-md-9 d-flex justify-content-center flex-wrap">
+                        <button type="button" class="btn btn-success flex-wrap"
+                            style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 75px; --bs-btn-font-size: 14px;" id="enterButton" onclick="login_validation();">
+                            Enter
+                        </button>
+                    </div>
+                </div>
+            </div>  
+            <div class="row mt-3">
+                <div class="col d-flex justify-content-center align-content-center">
+                    <label class="form-label d-flex justify-content-left" for="formControlemail" style="color: #D9814E;">OR</label>  
+                </div>
+            </div>  
+            <div class="row mt-2">
+                <div class="col d-flex justify-content-center flex-wrap">
+                    <div class="form-outline col-sm-6 col-md-9 d-flex justify-content-center flex-wrap">
+                        <button type="button" class="btn btn-primary flex-wrap"
+                        style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 14px;" id="enterButton" onclick="location.href='{% url 'register' %}'">
+                        Create Account
+                        </button>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>

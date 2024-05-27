@@ -1,0 +1,10 @@
+{% extends 'utils/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'login/main_content.html' %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/login/login.js' %}"></script>
+{% endblock scripts%}

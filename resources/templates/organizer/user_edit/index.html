@@ -1,0 +1,10 @@
+{% extends 'utils/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'organizer/user_edit/main_content.html' %}
+{% endblock %}
+
+{% block scripts %}
+    <script src={% static 'js/user/edit_account.js' %}></script>
+{% endblock %}

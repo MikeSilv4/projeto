@@ -1,0 +1,10 @@
+{% extends 'utils/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'organizer/home/event_form_edit.html' %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/organizer/utils.js' %}"></script>
+{% endblock %}

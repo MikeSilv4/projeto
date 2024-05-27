@@ -1,0 +1,11 @@
+{% extends 'utils/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'register/main_content.html' %}
+{% endblock %}
+
+{% block scripts %}
+    {% include 'register/scripts.html' %}
+    <script src="{% static 'js/register/create/create.js' %}"></script>
+{% endblock %}
