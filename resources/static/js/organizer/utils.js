@@ -73,3 +73,7 @@ function get_data() {
 function to_home(){
     window.location.href = location.protocol + "//" + location.host + "/dash/organizer/home/";
 }
+
+function oi(){
+    console.log('oi');
+}

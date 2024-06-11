@@ -20,13 +20,22 @@ function create_user() {
   })
     .then((response) => {
       if (response.ok) {
-        return response.json(); 
+        window.location.href = location.protocol + "//" + location.host + "/dash/home/"; 
       } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Someething went wrong",
-        });
+        
+        if(response.status == 409){
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Este usuario ja existe!",
+          });
+        }else{
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Someething went wrong",
+          });
+        }
       }
     })
     .then((data) => {
