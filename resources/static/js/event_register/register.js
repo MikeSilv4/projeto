@@ -1,5 +1,4 @@
 
-
 function create_event() {
 
     const data = get_data();
@@ -9,7 +8,7 @@ function create_event() {
     }
   
     const url = new URL('/api/event/', window.location.origin);
-    console.log(data);
+
     fetch(url, {
       method: 'POST',
       headers: {
@@ -66,16 +65,31 @@ function create_event() {
     const min_participants = document.getElementById('min_participants_form').value;
     const max_participants = document.getElementById('max_participants_form').value;
     const location = document.getElementById('loc_form').value;
-    const num_participants = 0
+    const num_participants = 0;
+
+    if (initial_hour > final_hour){
+      Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "A hora inicial nao pode ser menor que a final!",
+      });
+      return false;
+  }
+  if (initial_date > final_date){
+      Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "A data inicial nao pode ser menor que a final!",
+      });
+      return false;
+  }
 
     data = {name, description, initial_date, final_date, initial_hour, final_hour, min_participants, max_participants, num_participants, enrollment_value, location};
-    console.log(initial_date);
+
     return data;
   
   }
 
   function to_home(){
-    console.log(location.protocol);
-    console.log(location.host);
     window.location.href = location.protocol + "//" + location.host + "/dash/organizer/home/";
 }

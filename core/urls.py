@@ -28,6 +28,7 @@ urlpatterns = [
     #api
     path('api/', include('login.urls')),
     path('api/event/', include('event.urls')),
+    path('api/organizer/', include('organizer.urls')),
     #dash
     path('dash/', include('login.dash.urls')),
     path('dash/organizer/', include('organizer.dash.urls')),

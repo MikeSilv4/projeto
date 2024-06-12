@@ -1,5 +1,7 @@
 {% load static %}
 <div id="template_backgound" style="height: 100vh;">
+
+
     <div class="d-flex justify-content-end" style="width: 99vw;">
         <a href="{% url 'organizer:user_edit'  %}">
             <div class="col-md-auto">
@@ -10,9 +12,13 @@
     <div class="container pt-3">
         <div class="row d-flex justify-content-end">
             <div class="col-md-auto">
-                <button type="button" class="btn btn-outline-secondary btn-md btn-block" id="event_edit" onclick="to_form()">Edit Event</button>
+                <button type="button" class="btn btn-outline-secondary btn-md btn-block" id="event_edit" onclick="to_form()">Editar Evento</button>
+            </div>
+            <div class="col-md-auto">
+                <button type="button" class="btn btn-outline-secondary btn-md btn-block" id="event_edit" onclick="delete_event('{{event.id}}')">Excluir Evento</button>
             </div>
         </div>
+        
     </div>
     <div class="container-lg">
         <div class="container-md">

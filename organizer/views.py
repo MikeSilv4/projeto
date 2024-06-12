@@ -12,3 +12,17 @@ from django.shortcuts import redirect
 from organizer.dash.views import home
 from django.http import HttpResponseRedirect
 from autentication.models import Organizer
+from rest_framework.generics import GenericAPIView
+from autentication.models import *
+
+
+class DeleteAll(GenericAPIView):
+
+    def delete(self, request, user_id, *args, **kwargs):
+        user = CustomUser.objects.get(id=user_id)
+        lig = Organizer.objects.get(id=user.is_organizer.pk)
+        event = Events.objects.get(id=lig.event_id.pk)
+        print(vars(user))
+        print(lig)
+        print(event)
+        return Response('ok')

@@ -91,3 +91,37 @@ function edit_user(user_id) {
 function to_home(){
     window.location.href = location.protocol + "//" + location.host + "/dash/organizer/home/";
 }
+
+function to_login(){
+  window.location.href = location.protocol + "//" + location.host + "/dash/login/";
+}
+
+function delete_all(user_id){
+
+  const url = new URL(`/api/organizer/delete_all/${user_id}/`, window.location.origin);
+  fetch(url, {
+    method: 'DELETE',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        to_login();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Someething went wrong",
+        });
+      }
+    })
+    .then((data) => {
+      // Tratar os dados recebidos
+    })
+    .catch((error) => {
+      // Tratar o erro
+    });
+
+}

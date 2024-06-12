@@ -9,7 +9,6 @@ function create_user() {
   }
 
   const url = new URL('/api/registration/', window.location.origin);
-  console.log(data);
   fetch(url, {
     method: 'POST',
     headers: {
@@ -25,7 +24,7 @@ function create_user() {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Someething went wrong",
+          text: "Algo esta errado..",
         });
       }
     })
@@ -73,15 +72,28 @@ function get_data() {
 
     return false;
 
-  } else if(cpf.length != 14){
+  } 
+  if(cpf.length != 14){
 
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "The field CPF is wrong!",
+      text: "O campo CPF esta incorreto!",
     });
 
     return false;
+  }
+
+  if(passwd1.length < 8 || passwd1.length > 10){
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "A senha deve conter entre 8 e 10 digitos!",
+      });
+  
+      return false;
+
   }
 
   data = {email, born_date, cpf, first_name, last_name, passwd1};

@@ -7,11 +7,11 @@
             </div>
                 <div class="row mt-5">
                         <div class="form-outline col-sm-6 col-md-6">
-                            <label class="form-label d-flex justify-content-left" for="first_name_field" style="color: #D9814E;">First Name</label>  
+                            <label class="form-label d-flex justify-content-left" for="first_name_field" style="color: #D9814E;">Prrimeiro Nome</label>  
                             <input type="text" class="form-control" id="first_name_field" name="first_name_field" value={{user.username}}>
                         </div>
                         <div class="form-outline col-sm-6 col-md-6">
-                            <label class="form-label d-flex justify-content-left" for="last_name_field" style="color: #D9814E;">Last Name</label>  
+                            <label class="form-label d-flex justify-content-left" for="last_name_field" style="color: #D9814E;">Ultimo Nome</label>  
                             <input type="text" class="form-control" id="last_name_field" name="last_name_field" value={{user.last_name}}>
                         </div>
                 </div>   
@@ -22,7 +22,7 @@
                             <input type="text" class="form-control" id="cpf_field" name="cpf_field" value={{user.cpf}}>
                         </div>
                         <div class="form-outline col-sm-6 col-md-6">
-                            <label class="form-label d-flex justify-content-left" for="birth_field" style="color: #D9814E;">Born Date</label>  
+                            <label class="form-label d-flex justify-content-left" for="birth_field" style="color: #D9814E;">Data de nascimento</label>  
                             <input type="date" class="form-control" id="born_date_field" name="born_date_field" value="{{user.born_date}}">
                         </div>
                 </div>   
@@ -39,7 +39,7 @@
                 <div class="row mt-5">
                     <div class="col d-flex justify-content-center">
                         <div class="form-outline col-sm-12 col-md-12">
-                            <label for="passwd_field_1" class="d-flex justify-content-left" style="color: #D9814E;">Password (between 8 and 10 characters)</label>
+                            <label for="passwd_field_1" class="d-flex justify-content-left" style="color: #D9814E;">Senha (Entre 8 e 10 caracteres)</label>
                             <input type="passwd_field_1" id="passwd_field_1" class="form-control text-muted" name="passwd_field_1" aria-describedby="passwordHelpInline">
                           </div>
                     </div>
@@ -48,7 +48,7 @@
                 <div class="row mt-2">
                     <div class="col d-flex justify-content-center">
                         <div class="form-outline col-sm-12 col-md-12">
-                            <label for="passwd_field_2" class="d-flex justify-content-left" style="color: #D9814E;">Repeate Password</label>
+                            <label for="passwd_field_2" class="d-flex justify-content-left" style="color: #D9814E;">Repita a senha</label>
                             <input type="passwd_field_2" id="passwd_field_2" class="form-control text-muted" name="passwd_field_2" aria-describedby="passwordHelpInline">
                           </div>
                     </div>
@@ -59,17 +59,28 @@
                         <div class="form-outline col-sm-6 col-md-6 d-flex justify-content-left">
                             <button type="button" class="btn btn-primary"
                             style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 14px;" id="enterButton" onclick="history.back();">
-                                Back
+                                Voltar
                             </button>
                         </div>
+
                         <div class="form-outline col-sm-6 col-md-6 d-flex justify-content-end">
                             <button type="button" class="btn btn-success"
                             style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 14px;" id="enterButton" onclick="edit_user({{user.id}});">
-                            Edit Account
+                            Editar
                             </button>
                         </div>
                     </div>
                 </div>   
+                <div class="row mt-5">
+                    <div class="form-outline col-sm-12 col-md-12 d-flex justify-content-end">
+                        <div class="form-outline col-sm-6 col-md-6 d-flex justify-content-end">
+                            <button type="button" class="btn btn-danger"
+                            style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 14px;" id="delete_all" onclick="delete_all({{user.id}});">
+                            Excluir
+                            </button>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 </div>  
