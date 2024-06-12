@@ -32,4 +32,5 @@ urlpatterns = [
     #dash
     path('dash/', include('login.dash.urls')),
     path('dash/organizer/', include('organizer.dash.urls')),
+    path('dash/home/', include('home.dash.urls')),
 ]

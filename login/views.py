@@ -60,7 +60,7 @@ class LoginUser(APIView):
                     #return HttpResponseRedirect("/dash/organizer/home")
             else:
                 login(request, user)
-                return Response('OK', status=status.HTTP_200_OK)
+                return redirect('/dash/home/')
         else:
             return Response('Incorrect data...', status=status.HTTP_400_BAD_REQUEST)
         
