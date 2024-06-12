@@ -19,13 +19,21 @@ function create_user() {
   })
     .then((response) => {
       if (response.ok) {
-        return response.json(); 
+        window.location.href = location.protocol + "//" + location.host + "/dash/home/";
       } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Algo esta errado..",
-        });
+        if(response.status){
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Este usuario ja existe..",
+          });
+        }else{
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo esta errado..",
+          });
+        }
       }
     })
     .then((data) => {
@@ -101,3 +109,11 @@ function get_data() {
   return data;
 
 }
+
+document.getElementById('cpf_field').addEventListener('input', function(e) {
+  var cpf = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+  cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o primeiro ponto
+  cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o segundo ponto
+  cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Insere o hífen
+  e.target.value = cpf;
+});

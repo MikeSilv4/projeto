@@ -21,24 +21,24 @@ from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 class RegisterPartcipant(APIView):
         
-        def post(self, request):
+    def post(self, request):
+        print(request.data)
+        data = request.data
+        cpf = data['cpf']
+        born_date = data['born_date']
+        email = data['email']
+        first_name = data['first_name']
+        last_name = data['last_name']
+        passwd = data['passwd1']
 
-            data = request.data
-            cpf = data['cpf']
-            born_date = data['born_date']
-            email = data['email']
-            first_name = data['first_name']
-            last_name = data['last_name']
-            passwd = data['passwd1']
-
-            user = CustomUser.objects.filter(username=email).first()
-            if user:
-                return Response('This user arredy exist!', status=status.HTTP_400_BAD_REQUEST)
-            
-            user = get_user_model()
-            user = user.objects.create_user(email=email, password=passwd, born_date=born_date, cpf=cpf, first_name=first_name, last_name=last_name)
-
-            return Response('OK', status=status.HTTP_200_OK)
+        user = CustomUser.objects.filter(username=email).first()
+        if user:
+            return Response('This user arredy exist!', status=status.HTTP_400_BAD_REQUEST)
+        
+        user = get_user_model()
+        user = user.objects.create_user(email=email, password=passwd, born_date=born_date, cpf=cpf, first_name=first_name, last_name=last_name)
+        login(request, user)
+        return Response('OK', status=status.HTTP_200_OK)
         
 class LoginUser(APIView):
      def post(self, request):
