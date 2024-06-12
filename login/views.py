@@ -22,7 +22,7 @@ from rest_framework.permissions import IsAuthenticated
 class RegisterPartcipant(APIView):
         
     def post(self, request):
-        print(request.data)
+
         data = request.data
         cpf = data['cpf']
         born_date = data['born_date']
@@ -39,7 +39,7 @@ class RegisterPartcipant(APIView):
         user = user.objects.create_user(email=email, password=passwd, born_date=born_date, cpf=cpf, first_name=first_name, last_name=last_name)
         login(request, user)
         return Response('OK', status=status.HTTP_200_OK)
-        
+
 class LoginUser(APIView):
      def post(self, request):
 

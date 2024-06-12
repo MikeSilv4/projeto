@@ -19,13 +19,13 @@ function create_user() {
   })
     .then((response) => {
       if (response.ok) {
-        window.location.href = location.protocol + "//" + location.host + "/dash/home/";
+        window.location.href = location.protocol + "//" + location.host + "/dash/home/"; 
       } else {
-        if(response.status){
+        if(response.status == 409){
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Este usuario ja existe..",
+            text: "Este usuario ja existe!",
           });
         }else{
           Swal.fire({

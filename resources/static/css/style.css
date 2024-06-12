@@ -1,4 +1,5 @@
 #template_backgound {background-color: #120a16;}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 *{
@@ -27,7 +28,6 @@ body{
     background-color: #18181B; 
     position: relative;
     box-shadow: 0 0 1000px 90px #4c00ff;
-    z-index: -100;
     
 }
 
@@ -81,7 +81,7 @@ nav{
     width: 70%;
 }
 
-.btn{
+.btnk{
     padding: 1rem 2rem;
     font-size: 1rem;
     color: #fff;
@@ -91,7 +91,7 @@ nav{
     transition: all 0.3s ease;
 }
 
-.btn:hover{
+.btnk:hover{
     background-color: #1e40af;
 }
 
@@ -99,13 +99,13 @@ nav{
     max-width: 1200px;
     margin: auto;
     padding: 5rem 2rem;
-    
+    F
 }
 
 .blur{
     position: absolute;
     box-shadow: 0 0 1000px 90px #1f10c5;
-    z-index: -100;
+
 }
 
 header{
@@ -159,7 +159,6 @@ header .image::before{
     line-height: 20rem;
     color: #1d4ed8;
     opacity: 0.2;
-    z-index: -100;
 }
 
 header .image img{

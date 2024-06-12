@@ -142,4 +142,5 @@ function delete_event(id){
 
         }
     });
+
 }
