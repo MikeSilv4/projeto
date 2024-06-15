@@ -1,0 +1,43 @@
+{% load static %}
+
+<div class="conteudo_centro">
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <img src="{% static 'images/SAE.png' %}">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="{% url 'home:home' %}">Home</a></li>
+            <li id="link1" class="link"><a href="{% url 'home:events' %}">Eventos</a></li>
+            <li id="link3" class="link"><a href="#">Contato</a></li>
+            <li id="link4" class="link">
+                <div class="dropdown" id="configuration_select">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border-style: none;">
+                        Configurações
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'home:edit_user' %}" style="color: black;">Configuracoes de conta</a></li>
+                      <li><a class="dropdown-item" href="#" style="color: black;">Eventos registrados</a></li>
+                      {% if user.is_superuser %}
+                      <li><a class="dropdown-item" href="#" style="color: black;">Adicionar organizador</a></li>
+                      {% endif %}
+
+                      <li><a class="dropdown-item" href="{% url 'login:LogoutView' %}" style="color: black;">Encerrar secção</a></li>
+                    </ul>
+                  </div>
+            </li>
+        </ul>
+
+        <a href="">
+
+        </a>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row" id="data-table">
+
+    </div>
+</div>

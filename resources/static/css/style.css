@@ -1,5 +1,12 @@
 #template_backgound {background-color: #120a16;}
 
+#configuration_select {
+    -webkit-appearance: none; /* Safari e Chrome */
+    -moz-appearance: none; /* Firefox */
+    appearance: none; /* Padrão */
+    background-image: none; /* Remove qualquer imagem de fundo (seta) */
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 *{

@@ -24,7 +24,7 @@ function create_event() {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Someething went wrong",
+            text: "Algo esta errado..",
           });
         }
       })

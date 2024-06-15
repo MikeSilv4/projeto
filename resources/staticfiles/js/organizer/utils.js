@@ -5,6 +5,10 @@ function to_form(){
 function edit_event(event_id) {
 
     const data = get_data();
+
+    if(!data){
+        return;
+    }
     const url = new URL(`/api/event/${event_id}/`, window.location.origin);
 
     fetch(url, {
@@ -22,7 +26,7 @@ function edit_event(event_id) {
             Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Someething went wrong",
+            text: "Algo esta errado...",
             });
         }
         })
@@ -63,7 +67,24 @@ function get_data() {
     const min_participants = document.getElementById('min_participants_form').value;
     const max_participants = document.getElementById('max_participants_form').value;
     const location = document.getElementById('loc_form').value;
-    const num_participants = 0
+    const num_participants = 0;
+
+    if (initial_hour > final_hour){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "A hora inicial nao pode ser menor que a final!",
+        });
+        return false;
+    }
+    if (initial_date > final_date){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "A data inicial nao pode ser menor que a final!",
+        });
+        return false;
+    }
 
     data = {name, description, initial_date, final_date, initial_hour, final_hour, min_participants, max_participants, num_participants, enrollment_value, location};
     return data;
@@ -72,4 +93,54 @@ function get_data() {
 
 function to_home(){
     window.location.href = location.protocol + "//" + location.host + "/dash/organizer/home/";
+}
+
+function delete_event(id){
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+        title: "você tem certeza?",
+        text: "Você não poderá reverter isso!",
+        icon: "Cuidado",
+        showCancelButton: true,
+        confirmButtonText: "Sim, exclua-o!",
+        cancelButtonText: "Não, cancele!",
+        reverseButtons: true
+    }).then((result) => {
+        const url = new URL(`/api/event/${id}/`, window.location.origin);
+        if (result.isConfirmed) {
+
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+            })
+            .then((response) => {
+            if (response.ok) {
+                window.location.href = location.protocol + "//" + location.host + "/dash/login/";
+            } else {
+                Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Algo esta errado...",
+                });
+            }
+            })
+            .then((data) => {
+            // Tratar os dados recebidos
+            })
+            .catch((error) => {
+            // Tratar o erro
+            });
+
+        }
+    });
+
 }

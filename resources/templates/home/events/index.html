@@ -1,0 +1,11 @@
+{% extends 'utils/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'home/events/main_content.html' %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/home/events.js' %}"></script>
+<script src="{% static 'js/utils.js' %}"></script>
+{% endblock %}

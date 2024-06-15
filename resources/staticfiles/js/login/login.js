@@ -21,7 +21,7 @@ function login_validation() {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Someething went wrong",
+            text: "Algo esta errado..",
           });
         }
       })
@@ -64,3 +64,59 @@ function login_validation() {
     return data;
   
   }
+
+function send_email(){
+
+  const data = {'email' : document.getElementById('email_form').value};
+  console.log(document.getElementById('email_form').value);
+  if(!document.getElementById('email_form').value){
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Email não pode ser vazio.",
+    });
+
+    return;
+  }
+  const url = new URL('/api/send_mail/', window.location.origin);
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')
+    },
+    body: JSON.stringify(data)  
+  })
+    .then((response) => {
+      if (response.ok) {
+        Swal.fire({ 
+          position: "top",
+          icon: "success",
+          title: "Email enviado com sucesso!",
+          showConfirmButton: false,
+          timer: 1500
+        }).then((res) => {
+          window.location.href = location.protocol + "//" + location.host + "/dash/login/";
+        });
+        
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Algo esta errado..",
+        });
+      }
+    })
+    .then((data) => {
+      // Tratar os dados recebidos
+      console.log(data);
+    })
+    .catch((error) => {
+      // Tratar o erro
+      console.log(url);
+      console.log(data);
+      console.error(error.message);
+    });
+
+}

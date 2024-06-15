@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from rest_framework.views import APIView
+from rest_framework.views import APIView, View
 from autentication.models import CustomUserManager, CustomUser
 from django.contrib.auth import get_user_model
 from rest_framework.response import Response
 from rest_framework import status
 import json
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.template import loader
 from django.http import HttpResponse
 from django.shortcuts import redirect
@@ -17,6 +17,9 @@ from rest_framework import viewsets
 from .serializers import *
 from autentication.models import CustomUser
 from rest_framework.permissions import IsAuthenticated
+from django.core.mail import EmailMessage
+from django.conf import settings
+import random
 
 # Create your views here.
 class RegisterPartcipant(APIView):
@@ -33,7 +36,7 @@ class RegisterPartcipant(APIView):
 
         user = CustomUser.objects.filter(username=email).first()
         if user:
-            return Response('This user arredy exist!', status=status.HTTP_400_BAD_REQUEST)
+            return Response('This user arredy exist!', status=status.HTTP_409_CONFLICT)
         
         user = get_user_model()
         user = user.objects.create_user(email=email, password=passwd, born_date=born_date, cpf=cpf, first_name=first_name, last_name=last_name)
@@ -68,3 +71,22 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserAllFieldsSerializer
     queryset = CustomUser
     permission_classes = [IsAuthenticated]
+
+class SendMail(APIView):
+    def post(self, request, *args, **kwargs):
+        email = request.data['email']
+
+        new_passwd = ''
+        for i in range(10):
+            new_passwd += str(random.randint(0, 9))
+        email = EmailMessage(subject='Nova senha', body=new_passwd,
+                        from_email=settings.EMAIL_HOST_USER,
+                        to=[email])
+        email.send()
+
+        return Response('Enviado', status=status.HTTP_200_OK)
+    
+
+def LogoutView(request, *args, **kwargs):
+    logout(request)
+    return redirect('/dash/login/')

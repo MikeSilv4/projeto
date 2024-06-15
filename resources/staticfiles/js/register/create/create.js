@@ -9,7 +9,6 @@ function create_user() {
   }
 
   const url = new URL('/api/registration/', window.location.origin);
-  console.log(data);
   fetch(url, {
     method: 'POST',
     headers: {
@@ -20,13 +19,21 @@ function create_user() {
   })
     .then((response) => {
       if (response.ok) {
-        return response.json(); 
+        window.location.href = location.protocol + "//" + location.host + "/dash/home/"; 
       } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Someething went wrong",
-        });
+        if(response.status == 409){
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Este usuario ja existe!",
+          });
+        }else{
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo esta errado..",
+          });
+        }
       }
     })
     .then((data) => {
@@ -73,15 +80,28 @@ function get_data() {
 
     return false;
 
-  } else if(cpf.length != 14){
+  } 
+  if(cpf.length != 14){
 
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "The field CPF is wrong!",
+      text: "O campo CPF esta incorreto!",
     });
 
     return false;
+  }
+
+  if(passwd1.length < 8 || passwd1.length > 10){
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "A senha deve conter entre 8 e 10 digitos!",
+      });
+  
+      return false;
+
   }
 
   data = {email, born_date, cpf, first_name, last_name, passwd1};
@@ -89,3 +109,11 @@ function get_data() {
   return data;
 
 }
+
+document.getElementById('cpf_field').addEventListener('input', function(e) {
+  var cpf = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+  cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o primeiro ponto
+  cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o segundo ponto
+  cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Insere o hífen
+  e.target.value = cpf;
+});

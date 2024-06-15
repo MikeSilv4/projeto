@@ -6,4 +6,5 @@ app_name = 'home'
 urlpatterns = [
     path('', home, name='home'),
     path('edit-user/', edit_user, name='edit_user'),
+    path('events/', events, name='events'),
 ]

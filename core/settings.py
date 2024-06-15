@@ -11,13 +11,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-fohq%&r0q&ytyt6#d8b8!ic$0no$5bl5)g6$*e)z=+__yr-%zg'
-
+LOGIN_REDIRECT_URL = '/dash/login/'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
-
 AUTH_USER_MODEL = 'autentication.CustomUser'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mike.silva@grupocpcon.com' # conta gmail remetente
+EMAIL_HOST_PASSWORD = 'D5U7EPP3RVsempay'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
 
 # Application definition
 

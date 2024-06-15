@@ -1,0 +1,41 @@
+{% load static %}
+<div id="template_backgound" class="d-flex justify-content-center align-content-center flex-wrap" style="width: 100vw; height: 100vh;">
+    <div id="template_form_background" class="d-flex justify-content-center flex-wrap" style="background-color: #211426; min-width: 250px; min-height: 700px; max-width: 500px; max-height: 1000px; border-radius: 16px; box-shadow: 3px 3px 3px 3px #F25CCA;">
+        <div class="conteiner text-center" style="width: 80%; height: 80%;">
+            <div class="row d-flex justify-content-center">
+                <img class="img-fluid" style="max-width: 200px; max-height: 200px;" src="{% static "images/SAE_nobackground.png" %}"/>
+                <label style="font-size: 20px; color: #D9814E;">S.A.E</label>
+                <label style="font-size: 14px; color: #D9814E;">Sistemas Academico de Eventos</label>
+            </div>
+            <div class="row mt-5">
+                <div class="col d-flex justify-content-center">
+                    <div class="form-outline col-sm-12 col-md-12">
+                        <label class="form-label d-flex justify-content-left" for="email_form" style="color: #D9814E;">Email</label>  
+                        <input
+                            class="form-control"
+                            id="email_form"
+                            type="text"
+                            placeholder="example@gmail.com"
+                            required
+                        />
+                    </div>
+                </div>
+            </div>   
+
+            <div class="row mt-5">
+                <div class="form-outline col-sm-6 col-md-6 d-flex justify-content-left">
+                        <button type="button" class="btn btn-primary"
+                        onclick="history.back();">
+                            Voltar
+                        </button>   
+                </div>
+                    <div class="form-outline col-sm-6 col-md-6 d-flex justify-content-right">
+                        <button type="button" class="btn btn-success"
+                        id="email" onclick="send_email();">
+                        Pedir nova senha    
+                        </button>
+                    </div>
+            </div>   
+        </div>
+    </div>
+</div>

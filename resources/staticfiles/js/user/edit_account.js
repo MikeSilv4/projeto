@@ -3,14 +3,12 @@
 function edit_user(user_id) {
 
     const data = get_data();
-    console.log(user_id);
-    return
+
     if(!data){
       return;
     }
   
     const url = new URL(`/api/user/${user_id}/`, window.location.origin);
-    console.log(data);
     fetch(url, {
       method: 'PATCH',
       headers: {
@@ -21,7 +19,7 @@ function edit_user(user_id) {
     })
       .then((response) => {
         if (response.ok) {
-          return response.json(); 
+          to_home();
         } else {
           Swal.fire({
             icon: "error",
@@ -89,3 +87,49 @@ function edit_user(user_id) {
     return data;
   
   }
+
+function to_home(){
+    window.location.href = location.protocol + "//" + location.host + "/dash/organizer/home/";
+}
+
+function to_login(){
+  window.location.href = location.protocol + "//" + location.host + "/dash/login/";
+}
+
+function delete_all(user_id){
+
+  const url = new URL(`/api/organizer/delete_all/${user_id}/`, window.location.origin);
+  fetch(url, {
+    method: 'DELETE',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken')
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        to_login();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Someething went wrong",
+        });
+      }
+    })
+    .then((data) => {
+      // Tratar os dados recebidos
+    })
+    .catch((error) => {
+      // Tratar o erro
+    });
+
+}
+
+document.getElementById('cpf_field').addEventListener('input', function(e) {
+  var cpf = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+  cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o primeiro ponto
+  cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o segundo ponto
+  cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Insere o hífen
+  e.target.value = cpf;
+});

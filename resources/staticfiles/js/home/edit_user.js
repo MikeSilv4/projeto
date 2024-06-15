@@ -19,12 +19,16 @@ function edit_user(user_id) {
     })
       .then((response) => {
         if (response.ok) {
-          to_home();
+            Swal.fire({
+                icon: "success",
+                title: "OK",
+                text: "Dados atualizados com sucesso!!",
+              });
         } else {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Someething went wrong",
+            text: "Algo esta errado",
           });
         }
       })
@@ -66,7 +70,7 @@ function edit_user(user_id) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "The passwords must be equal!",
+        text: "As senhas pecisam ser iguais!",
       });
   
       return false;
@@ -76,7 +80,7 @@ function edit_user(user_id) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "The field CPF is wrong!",
+        text: "O campo CPF esta errado!",
       });
   
       return false;
@@ -89,47 +93,17 @@ function edit_user(user_id) {
   }
 
 function to_home(){
-    window.location.href = location.protocol + "//" + location.host + "/dash/organizer/home/";
+    window.location.href = location.protocol + "//" + location.host + "/dash/home/";
 }
 
 function to_login(){
   window.location.href = location.protocol + "//" + location.host + "/dash/login/";
 }
 
-function delete_all(user_id){
-
-  const url = new URL(`/api/organizer/delete_all/${user_id}/`, window.location.origin);
-  fetch(url, {
-    method: 'DELETE',
-    headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': getCookie('csrftoken')
-    },
-  })
-    .then((response) => {
-      if (response.ok) {
-        to_login();
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Someething went wrong",
-        });
-      }
-    })
-    .then((data) => {
-      // Tratar os dados recebidos
-    })
-    .catch((error) => {
-      // Tratar o erro
-    });
-
-}
-
 document.getElementById('cpf_field').addEventListener('input', function(e) {
-  var cpf = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-  cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o primeiro ponto
-  cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o segundo ponto
-  cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Insere o hífen
-  e.target.value = cpf;
-});
+    var cpf = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o primeiro ponto
+    cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2'); // Insere o segundo ponto
+    cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Insere o hífen
+    e.target.value = cpf;
+  });

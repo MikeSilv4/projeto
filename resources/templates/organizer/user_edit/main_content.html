@@ -8,7 +8,7 @@
                 <div class="row mt-5">
                         <div class="form-outline col-sm-6 col-md-6">
                             <label class="form-label d-flex justify-content-left" for="first_name_field" style="color: #D9814E;">Prrimeiro Nome</label>  
-                            <input type="text" class="form-control" id="first_name_field" name="first_name_field" value={{user.username}}>
+                            <input type="text" class="form-control" id="first_name_field" name="first_name_field" value={{user.first_name}}>
                         </div>
                         <div class="form-outline col-sm-6 col-md-6">
                             <label class="form-label d-flex justify-content-left" for="last_name_field" style="color: #D9814E;">Ultimo Nome</label>  
@@ -19,7 +19,7 @@
                 <div class="row mt-2">
                         <div class="form-outline col-sm-6 col-md-6">
                             <label class="form-label d-flex justify-content-left" for="cpf_field" style="color: #D9814E;">CPF</label>  
-                            <input type="text" class="form-control" id="cpf_field" name="cpf_field" value={{user.cpf}}>
+                            <input type="text" class="form-control" id="cpf_field" name="cpf_field" value={{user.cpf}} maxlength="14">
                         </div>
                         <div class="form-outline col-sm-6 col-md-6">
                             <label class="form-label d-flex justify-content-left" for="birth_field" style="color: #D9814E;">Data de nascimento</label>  
