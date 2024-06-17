@@ -8,7 +8,7 @@ class Organizer(models.Model):
     institution_name = models.CharField(max_length=1024, null=False, default=None)
 
     #foreignKeys
-    event_id = models.ForeignKey(Events, null=True, default=None, on_delete=models.SET_NULL)
+    event_id = models.ForeignKey(Events, null=True, default=None, on_delete=models.CASCADE)
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -37,7 +37,7 @@ class CustomUser(AbstractUser):
     email = models.CharField(max_length=512, null=False, unique=True)
     born_date = models.DateField(null=True)
     cpf = models.CharField(max_length=14, null=True)
-    is_organizer = models.ForeignKey(Organizer, null=True, default=None, on_delete=models.SET_NULL)
+    is_organizer = models.ForeignKey(Organizer, null=True, default=None, on_delete=models.CASCADE)
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "email"

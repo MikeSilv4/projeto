@@ -61,8 +61,7 @@ function create_event() {
     const final_date = document.getElementById('final_date_form').value;
     const enrollment_value = document.getElementById('valor_form').value;
     const initial_hour = document.getElementById('initial_hour_form').value;
-    const final_hour = document.getElementById('final_hour_form').value;
-    const min_participants = document.getElementById('min_participants_form').value;
+    const final_hour = document.getElementById('final_hour_form').value
     const max_participants = document.getElementById('max_participants_form').value;
     const location = document.getElementById('loc_form').value;
     const num_participants = 0;
@@ -84,7 +83,7 @@ function create_event() {
       return false;
   }
 
-    data = {name, description, initial_date, final_date, initial_hour, final_hour, min_participants, max_participants, num_participants, enrollment_value, location};
+    data = {name, description, initial_date, final_date, initial_hour, final_hour, max_participants, num_participants, enrollment_value, location};
 
     return data;
   

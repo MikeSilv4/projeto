@@ -9,4 +9,5 @@ urlpatterns = [
     path('events/', events, name='events'),
     path('create-organizer/', create_organizer, name='create_organizer'),
     path('participant-events/', participant_events, name='participant_events'),
+    path('new-password/', new_passwd, name='new_passwd'),
 ]

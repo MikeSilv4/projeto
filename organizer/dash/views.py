@@ -40,5 +40,6 @@ def edit_user(request):
     user = CustomUser.objects.get(pk=request.user.pk)
     user.born_date = user.born_date.strftime("%Y-%m-%d")
     context['user'] = user
+    print(vars(user))
 
     return render(request, 'organizer/user_edit/index.html', context)

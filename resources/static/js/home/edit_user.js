@@ -7,6 +7,7 @@ function edit_user(user_id) {
     if(!data){
       return;
     }
+    console.log(data);
   
     const url = new URL(`/api/user/${user_id}/`, window.location.origin);
     fetch(url, {
@@ -63,19 +64,10 @@ function edit_user(user_id) {
     const cpf = document.getElementById('cpf_field').value;
     const first_name = document.getElementById('first_name_field').value;
     const last_name = document.getElementById('last_name_field').value;
-    const passwd1 = document.getElementById('passwd_field_1').value;
-    const passwd2 = document.getElementById('passwd_field_2').value;
   
-    if(passwd1 != passwd2){
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "As senhas pecisam ser iguais!",
-      });
+
   
-      return false;
-  
-    } else if(cpf.length != 14){
+    if(cpf.length != 14){
   
       Swal.fire({
         icon: "error",
@@ -86,7 +78,7 @@ function edit_user(user_id) {
       return false;
     }
   
-    data = {born_date, cpf, first_name, last_name, passwd1};
+    data = {born_date, cpf, first_name, last_name};
   
     return data;
   
@@ -107,3 +99,47 @@ document.getElementById('cpf_field').addEventListener('input', function(e) {
     cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Insere o hífen
     e.target.value = cpf;
   });
+
+function delete_user(id){
+
+  const url = new URL(`/api/user/${id}/`, window.location.origin);
+
+  Swal.fire({
+    title: "Você tem certeza?",
+    text: "Esta ação e irreversível",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sim"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            Swal.fire({
+              title: "Deletado!",
+              text: "Sucesso na deleção da conta!",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1500
+            }).then(res => {
+              window.location.href = location.protocol + "//" + location.host + "/dash/login/";
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Algo esta errado",
+            });
+          }
+        })
+    }
+  });
+}

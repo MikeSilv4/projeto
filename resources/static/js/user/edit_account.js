@@ -3,7 +3,7 @@
 function edit_user(user_id) {
 
     const data = get_data();
-
+    console.log(data);
     if(!data){
       return;
     }
@@ -59,19 +59,8 @@ function edit_user(user_id) {
     const cpf = document.getElementById('cpf_field').value;
     const first_name = document.getElementById('first_name_field').value;
     const last_name = document.getElementById('last_name_field').value;
-    const passwd1 = document.getElementById('passwd_field_1').value;
-    const passwd2 = document.getElementById('passwd_field_2').value;
   
-    if(passwd1 != passwd2){
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "The passwords must be equal!",
-      });
-  
-      return false;
-  
-    } else if(cpf.length != 14){
+    if(cpf.length != 14){
   
       Swal.fire({
         icon: "error",
@@ -82,7 +71,7 @@ function edit_user(user_id) {
       return false;
     }
   
-    data = {born_date, cpf, first_name, last_name, passwd1};
+    data = {born_date, cpf, first_name, last_name};
   
     return data;
   

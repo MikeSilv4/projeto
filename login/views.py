@@ -20,7 +20,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.core.mail import EmailMessage
 from django.conf import settings
 import random
-
+from django.urls import reverse
 # Create your views here.
 class RegisterPartcipant(APIView):
         
@@ -63,7 +63,10 @@ class LoginUser(APIView):
                     #return HttpResponseRedirect("/dash/organizer/home")
             else:
                 login(request, user)
-                return redirect('/dash/home/')
+                if passwd != '11111111111':
+                    return redirect('/dash/home/')
+                else:
+                    return redirect('/dash/home/new-password/')
         else:
             return Response('Incorrect data...', status=status.HTTP_400_BAD_REQUEST)
         
@@ -76,16 +79,29 @@ class SendMail(APIView):
     def post(self, request, *args, **kwargs):
         email = request.data['email']
 
-        new_passwd = ''
-        for i in range(10):
-            new_passwd += str(random.randint(0, 9))
-        email = EmailMessage(subject='Nova senha', body=new_passwd,
+        user = CustomUser.objects.get(username=email)
+        user.set_password('11111111111')
+        user.save()
+
+        email = EmailMessage(subject='Nova senha', body=f"Ola, sua senha provisoria e '11111111111'",
                         from_email=settings.EMAIL_HOST_USER,
                         to=[email])
         email.send()
 
         return Response('Enviado', status=status.HTTP_200_OK)
+
+class password(APIView):
+    def post(self, request, *args, **kwargs):
+        email = request.data['email']
+        password = request.data['password']
+
+        user = CustomUser.objects.get(username=email)
+        user.set_password(password)
+        user.save()
+
+        return Response('ok', status=status.HTTP_200_OK)
     
+
 
 def LogoutView(request, *args, **kwargs):
     logout(request)

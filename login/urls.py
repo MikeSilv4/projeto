@@ -13,5 +13,6 @@ urlpatterns = [
     path('registration/', RegisterPartcipant.as_view()),
     path('login/', LoginUser.as_view()),
     path('send_mail/', SendMail.as_view()),
+    path('new-password/', password.as_view()),
     path('logout/', LogoutView, name='LogoutView'),
 ]

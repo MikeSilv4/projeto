@@ -1,6 +1,6 @@
 {% load static %}
 <div id="template_backgound" class="d-flex justify-content-center align-content-center flex-wrap" style="width: 100vw; height: 100vh;">
-    <div id="template_form_background" class="d-flex justify-content-center flex-wrap" style="background-color: #211426; min-width: 700px; min-height: 800px; max-width: 800px; max-height: 900px; border-radius: 16px; box-shadow: 3px 3px 3px 3px #F25CCA;">
+    <div id="template_form_background" class="d-flex justify-content-center flex-wrap" style="background-color: #211426; min-width: 700px; min-height: 500px; max-width: 800px; max-height: 600px; border-radius: 16px; box-shadow: 3px 3px 3px 3px #F25CCA;">
         <div class="conteiner text-center mt-3" style="width: 90%; height: 95%;">
             <div class="row d-flex justify-content-center">
                 <label style="font-size: 35px; color: #D9814E;">Edit Account</label>
@@ -8,18 +8,18 @@
                 <div class="row mt-5">
                         <div class="form-outline col-sm-6 col-md-6">
                             <label class="form-label d-flex justify-content-left" for="first_name_field" style="color: #D9814E;">Prrimeiro Nome</label>  
-                            <input type="text" class="form-control" id="first_name_field" name="first_name_field" value={{user.first_name}}>
+                            <input type="text" class="form-control" id="first_name_field" name="first_name_field" value="{{user.first_name}}">
                         </div>
                         <div class="form-outline col-sm-6 col-md-6">
                             <label class="form-label d-flex justify-content-left" for="last_name_field" style="color: #D9814E;">Ultimo Nome</label>  
-                            <input type="text" class="form-control" id="last_name_field" name="last_name_field" value={{user.last_name}}>
+                            <input type="text" class="form-control" id="last_name_field" name="last_name_field" value="{{user.last_name}}">
                         </div>
                 </div>   
     
                 <div class="row mt-2">
                         <div class="form-outline col-sm-6 col-md-6">
                             <label class="form-label d-flex justify-content-left" for="cpf_field" style="color: #D9814E;">CPF</label>  
-                            <input type="text" class="form-control" id="cpf_field" name="cpf_field" value={{user.cpf}} maxlength="14">
+                            <input type="text" class="form-control" id="cpf_field" name="cpf_field" value="{{user.cpf}}" maxlength="14">
                         </div>
                         <div class="form-outline col-sm-6 col-md-6">
                             <label class="form-label d-flex justify-content-left" for="birth_field" style="color: #D9814E;">Data de nascimento</label>  
@@ -31,26 +31,8 @@
                     <div class="col d-flex justify-content-center">
                         <div class="form-outline col-sm-12 col-md-12">
                             <label class="form-label d-flex justify-content-left" for="email_field" style="color: #D9814E;">Email</label>  
-                            <input type="text" class="form-control" id="email_field" name="email_field" value={{user.email}} disabled>
+                            <input type="text" class="form-control" id="email_field" name="email_field" value="{{user.email}}" disabled>
                         </div>
-                    </div>
-                </div>   
-    
-                <div class="row mt-5">
-                    <div class="col d-flex justify-content-center">
-                        <div class="form-outline col-sm-12 col-md-12">
-                            <label for="passwd_field_1" class="d-flex justify-content-left" style="color: #D9814E;">Senha (Entre 8 e 10 caracteres)</label>
-                            <input type="passwd_field_1" id="passwd_field_1" class="form-control text-muted" name="passwd_field_1" aria-describedby="passwordHelpInline">
-                          </div>
-                    </div>
-                </div>   
-    
-                <div class="row mt-2">
-                    <div class="col d-flex justify-content-center">
-                        <div class="form-outline col-sm-12 col-md-12">
-                            <label for="passwd_field_2" class="d-flex justify-content-left" style="color: #D9814E;">Repita a senha</label>
-                            <input type="passwd_field_2" id="passwd_field_2" class="form-control text-muted" name="passwd_field_2" aria-describedby="passwordHelpInline">
-                          </div>
                     </div>
                 </div>   
     
@@ -71,11 +53,11 @@
                         </div>
                     </div>
                 </div>   
-                <div class="row mt-5">
+                <div class="row mt-4">
                     <div class="form-outline col-sm-12 col-md-12 d-flex justify-content-end">
                         <div class="form-outline col-sm-6 col-md-6 d-flex justify-content-end">
                             <button type="button" class="btn btn-danger"
-                            style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 14px;" id="delete_all" onclick="delete_all({{user.id}});">
+                            style="--bs-btn-padding-y: 7px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 14px;" id="delete_all" onclick="delete_user({{user.id}});">
                             Excluir
                             </button>
                         </div>

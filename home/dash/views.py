@@ -51,3 +51,10 @@ def participant_events(request):
 def create_organizer(request):
     context = {}
     return render(request, 'home/organizer/create/index.html', context)
+
+@login_required
+def new_passwd(request):
+    context = {}
+    user = request.user.pk
+    context['user'] = CustomUser.objects.get(pk=user)
+    return render(request, 'new_password/index.html', context)
