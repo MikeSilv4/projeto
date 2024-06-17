@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from autentication.models import Organizer, CustomUser
 from event.serializers import EventAllFieldsSerializer
 
-@login_required(redirect_field_name="/dash/login/")
+@login_required
 def home(request):
     context = {}
     user = request.user
@@ -21,7 +21,7 @@ def home(request):
 
     return render(request, 'organizer/home/index.html', context)
 
-@login_required(redirect_field_name="/dash/login/")
+@login_required
 def event_edit(request):
     context = {}
     user = CustomUser.objects.get(pk=request.user.pk)
@@ -30,11 +30,11 @@ def event_edit(request):
     context['event'] = event.data
     return render(request, 'organizer/home/event_index_edit.html', context)
 
-@login_required(redirect_field_name="/dash/login/")
+@login_required
 def event_create(request):
     return render(request, 'organizer/home/event_index_create.html')
 
-@login_required(redirect_field_name="/dash/login/")
+@login_required
 def edit_user(request):
     context = {}
     user = CustomUser.objects.get(pk=request.user.pk)

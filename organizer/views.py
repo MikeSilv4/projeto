@@ -14,9 +14,39 @@ from django.http import HttpResponseRedirect
 from autentication.models import Organizer
 from rest_framework.generics import GenericAPIView
 from autentication.models import *
+from login.serializers import UserAllFieldsSerializer
+from .serializers import OrganizerAllFieldsSerializer
+from autentication.models import CustomUser
+from django.contrib.auth import get_user_model
 
 
-class DeleteAll(GenericAPIView):
+class OrganizerViewSet(GenericAPIView):
+
+    def post(self, request):
+
+        user = CustomUser.objects.filter(username=request.data['user_data']['email']).first()
+        if user:
+            return Response('This user arredy exist!', status=status.HTTP_409_CONFLICT)
+        
+        institution_object = OrganizerAllFieldsSerializer(data=request.data['institution_data'])
+        if institution_object.is_valid():
+            institution_object = institution_object.save()
+
+            data = request.data['user_data']
+            cpf = data['cpf']
+            born_date = data['born_date']
+            email = data['email']
+            first_name = data['first_name']
+            last_name = data['last_name']
+            passwd = data['password']
+            is_organizer = institution_object
+            user = get_user_model()
+            user.objects.create_user(email=email, password=passwd, born_date=born_date, cpf=cpf, first_name=first_name, last_name=last_name, is_organizer=is_organizer)
+
+            return Response('ok', status=status.HTTP_200_OK)
+
+        else:
+            return Response({'errors' : {'institution' : institution_object.errors,}} , status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, user_id, *args, **kwargs):
         user = CustomUser.objects.get(id=user_id)

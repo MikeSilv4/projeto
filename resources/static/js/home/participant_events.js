@@ -1,8 +1,7 @@
 get_events();
 
-
 function get_events() {
-    const url = new URL(`/api/event/`, window.location.origin);
+    const url = new URL(`/api/event/user_events/`, window.location.origin);
 
     fetch(url, {
         method: 'GET',
@@ -19,7 +18,9 @@ function get_events() {
         }
     })
     .then((data) => {
-        make_table(data); // Aqui 'data' contém o JSON resolvido
+        if(data.length != 0){
+            make_table(data.data); // Aqui 'data' contém o JSON resolvido
+        }
     })
     .catch((error) => {
         console.error('Erro na requisição:', error);
@@ -75,25 +76,6 @@ function getCookie(cname) {
 }
 
 function open_modal(data){
-    console.log(data);
-    var user_events = window.localStorage.getItem('user_events');
-    user_events = JSON.parse(user_events);
-    let buy_button = document.getElementById('buy_button');
-
-    if(data.num_participants === data.max_participants){
-        buy_button.disabled = true;
-    }else{
-        buy_button.disabled = false;
-    }
-
-   for(let i of user_events){
-        if(i === data.id){
-            buy_button.disabled = true;
-            break;
-        }else{
-            buy_button.disabled = false;
-        }
-    }
 
     var event_id = JSON.stringify(data.id);
     window.localStorage.setItem('event_id', event_id);
@@ -105,14 +87,8 @@ function open_modal(data){
         modal.hide();
     });
 
-    document.getElementById('buy_button').addEventListener('click', function(){
-        modal.hide();
-    });
-
     let data_table = document.getElementById('data_table');
-    let sales = document.getElementById('sales');
     data_table.innerHTML = '';
-    sales.innerHTML = '';
     data_table.innerHTML = `
         <tr><th colspan="2" style="font-size: 20px;"><center>${data.name}</center></th></tr>
         <tr><td colspan="2" style="font-size: 12px; word-wrap: break-word; max-width: 400px;"><center>${data.description}</center></td></tr>
@@ -123,13 +99,6 @@ function open_modal(data){
         <tr><th colspan="2"><center>Valor: </center></th></tr>
         <tr><td colspan="2"><center>${data.enrollment_value}</center></td></tr>
     `;
-    sales.innerHTML = ` 
-    ${data.num_participants}/${data.max_participants}
-    `
-
-    function new_modal(){
-        buy_modal(modal);
-    }
 }
 
 function retreave_event(id) {
@@ -162,42 +131,52 @@ function retreave_event(id) {
     });
 }
 
-function buy_modal(){
+function cancel(){
 
     var event = window.localStorage.getItem('event_id');
     event = JSON.parse(event);
-    var user = window.localStorage.getItem('userPk');
-    user = JSON.parse(user);
-    console.log(userPk);
-    let data = {user, event};
-    console.log(data);
-    const url = new URL(`/api/home/user_events/`, window.location.origin);
-    fetch(url, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': getCookie('csrftoken')
-      },
-      body: JSON.stringify(data)  
-    })
-    .then((response) => {
-    if (response.ok) {
 
-    } else {
-        Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Algo esta errado",
-        });
-    }
-    });
+    let data = {'event' : event};
 
-    var buy_modal = new bootstrap.Modal(document.getElementById('buy_modal'));
-    buy_modal.show();
-
-    document.getElementById('close_buy_modal').addEventListener('click', function(){
-        buy_modal.hide();
-        window.location.href = location.protocol + "//" + location.host + "/dash/home/events"; 
-    });
+    Swal.fire({
+        title: "Você tem certeza?",
+        text: "Esta ação e irreversível",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            const url = new URL(`/api/home/user_events/delete_user_event/`, window.location.origin);
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(data)  
+            })
+            .then((response) => {
+                if (response.ok) {
+                    Swal.fire({
+                        title: "Deletado!",
+                        text: "Sucesso no cancelamento!",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1500
+                      }).then(res => {
+                        window.location.href = location.protocol + "//" + location.host + "/dash/home/participant-events/";
+                      });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Algo está errado...",
+                    });
+                }
+            })
+        }
+      });
 
 }

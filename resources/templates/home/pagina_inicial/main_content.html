@@ -1,42 +1,38 @@
 {% load static %}
 
-<div class="conteudo_centro">
-    <nav>
-        <div class="nav-logo">
+<div class="container-fluid" style="background-color: #18181B; box-shadow: 0 0 1000px 90px #120a16;">
+    <div class="row pt-3 pb-3">
+        <div class="col-md-2 d-flex justify-content-center align-items-center">
             <a href="#">
-                <img src="{% static 'images/SAE.png' %}">
+                <img src="{% static 'images/SAE.png' %}" class="img-thumbnail" style="width: 100px; background-color: transparent;">
             </a>
         </div>
+        <div class="col">
+            <div class="container">
+                <div class="row d-flex justify-content-end align-items-center">
+                    <div class="col-sm-auto link"><a href="{% url 'home:home' %}">Home</a></div>
+                    <div class="col-sm-auto link"><a href="{% url 'home:events' %}">Eventos</a></div>
+                    <div class="col-sm-auto link"><a href="{% url 'home:participant_events' %}">Meus eventos</a></div>
+                    <div class="col-sm-auto link">
+                        <div class="dropdown" id="configuration_select">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: transparent; border-style: none;">
+                                Configurações   
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'home:edit_user' %}" style="color: black;">Configuracoes de conta</a></li>
+                                <li><a class="dropdown-item" href="#" style="color: black;">Eventos registrados</a></li>
+                                {% if user.is_superuser %}
+                                <li><a class="dropdown-item" href="{% url 'home:create_organizer' %}" style="color: black;">Adicionar organizador</a></li>
+                                {% endif %}
 
-        <ul class="nav-links">
-            <li class="link"><a href="{% url 'home:home' %}">Home</a></li>
-            <li id="link1" class="link"><a href="{% url 'home:events' %}">Eventos</a></li>
-            <li id="link3" class="link"><a href="#">Contato</a></li>
-        </ul>
-
-
-
-        <a href="">
-        <img class="mt-3 mr-3" src="{% static '/images/user.png' %}" style="border-radius: 50%; width: 50px; ">
-        </a>
-    </nav>
-    
-
-    <header class="container">
-        <div  class="content">
-            <span class="blur"></span>
-            <span class="blur"></span>
-            <h4> Bem Vindo SAE</h4>
-            <h1>  </h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio illum obcaecati optio dolorum, doloribus numquam tempore sapiente, fugit quisquam assumenda repellendus facere rem laborum inventore dolore accusantium quae aliquam! Temporibus.
-            </p>
-            <button class="btnk"> PARTICIPANTES</button>
+                                <li><a class="dropdown-item" href="{% url 'login:LogoutView' %}" style="color: black;">Encerrar secção</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>   
         </div>
-        <div class="image">
-            <img src="{% static 'images/img1.png' %}" alt ="">
-
-        </div>
-     </header>
+    </div>
 </div>
 
 
@@ -48,16 +44,16 @@
             <img src="{% static 'images/img3.png' %}">
         </div>
         <div class="texto">
-            <h4>Este é o lugar onde você encontra tudo o que precisa para se manter atualizado e inspirado no campo da Tecnologia da Informação. Nossa missão é oferecer:</h4>
-            <h1>
-            <p>
-            <i class="ri-checkbox-circle-line"></i>
+            <h4 style="color: white;">Este é o lugar onde você encontra tudo o que precisa para se manter atualizado e inspirado no campo da Tecnologia da Informação. Nossa missão é oferecer:</h4>
+            <h1 style="color: white;">
+            <p style="color: white;">
+            <i class="ri-checkbox-circle-line" style="color: white;"></i>
             Uma experiência completa
             </p>
-            <i class="ri-checkbox-circle-line"></i>
+            <i class="ri-checkbox-circle-line" style="color: white;"></i>
             Repleta de eventos emocionantes
             </p>
-            <i class="ri-checkbox-circle-line"></i>
+            <i class="ri-checkbox-circle-line" style="color: white;"></i>
             Conhecimento de ponta e conexões valiosas
             </p>
             </h1>
@@ -71,16 +67,16 @@
     <h2 class="header"> O que temos a te oferecer </h2>
     <div class="features">
         <div class="texto">
-            <h4>Este é o lugar onde você encontra tudo o que precisa para se manter atualizado e inspirado no campo da Tecnologia da Informação. Nossa missão é oferecer:</h4>
-            <h1>
+            <h4 style="color: white;">Este é o lugar onde você encontra tudo o que precisa para se manter atualizado e inspirado no campo da Tecnologia da Informação. Nossa missão é oferecer:</h4>
+            <h1 style="color: white;">
             <p>
-            <i class="ri-checkbox-circle-line"></i>
+            <i class="ri-checkbox-circle-line" style="color: white;"></i>
             Uma experiência completa
             </p>
-            <i class="ri-checkbox-circle-line"></i>
+            <i class="ri-checkbox-circle-line" style="color: white;"></i>
             Repleta de eventos emocionantes
             </p>
-            <i class="ri-checkbox-circle-line"></i>
+            <i class="ri-checkbox-circle-line" style="color: white;"></i>
             Conhecimento de ponta e conexões valiosas
             </p>
             </h1>
@@ -100,17 +96,17 @@
         <div class="image">
             <img src="{% static 'images/img2.png' %}">
         </div>
-        <div class="texto">
-            <h4>Este é o lugar onde você encontra tudo o que precisa para se manter atualizado e inspirado no campo da Tecnologia da Informação. Nossa missão é oferecer:</h4>
-            <h1>
-            <p>
-            <i class="ri-checkbox-circle-line"></i>
+        <div class="texto" style="color: white;" >
+            <h4 style="color: white;">Este é o lugar onde você encontra tudo o que precisa para se manter atualizado e inspirado no campo da Tecnologia da Informação. Nossa missão é oferecer:</h4>
+            <h1 style="color: white;">
+            <p style="color: white;">
+            <i class="ri-checkbox-circle-line" style="color: white;"></i>
             Uma experiência completa
             </p>
-            <i class="ri-checkbox-circle-line"></i>
+            <i class="ri-checkbox-circle-line" style="color: white;"></i>
             Repleta de eventos emocionantes
-            </p>
-            <i class="ri-checkbox-circle-line"></i>
+            </p style="color: white;">
+            <i class="ri-checkbox-circle-line" style="color: white;"></i>
             Conhecimento de ponta e conexões valiosas
             </p>
             </h1>
@@ -129,7 +125,7 @@
         <div class="logo">
             <img src="{%static 'images/SAE_COM_LETRA.png'%}">
         </div>
-        <p>
+        <p style="color: white;">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
         <div class="socials">

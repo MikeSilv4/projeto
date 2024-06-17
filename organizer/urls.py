@@ -8,5 +8,5 @@ router = DefaultRouter()
 
 urlpatterns = [
     #path('delete_all/', include(router.urls)),
-    path('delete_all/<int:user_id>/', DeleteAll.as_view(), name='delete_all'),
+    path('', OrganizerViewSet.as_view(), name='OrganizerViewSet'),
 ]

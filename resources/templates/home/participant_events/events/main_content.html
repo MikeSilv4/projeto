@@ -52,7 +52,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="event" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-xl   " role="document">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Evento</h5>
@@ -63,10 +63,10 @@
         <div class="modal-body">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4">
-                        <img src="/resources/static/images/events/default.png" style="width: 300px; border-radius: 16px;">
+                    <div class="col-sm-auto">
+                        <img src="/resources/static/images/events/default.png" style="width: 250px; border-radius: 16px; background-color: red;">
                     </div>
-                    <div class="col">
+                    <div class="col-sm-auto">
                         <table id="data_table">
 
                         </table>
@@ -77,37 +77,12 @@
                         <hr>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col d-flex justify-content-end align-items-center   ">
+                <div class="row">   
+                    <div class="col d-flex justify-content-end align-items-bottom">
                         <label for="buy" id="sales"></label>
-                        <button type="button" class="btn btn-lg btn-success"  id="buy_button" onclick="buy_modal();">
-                            Comprar
+                        <button type="button" class="btn btn-lg btn-danger" id="cancel_button" onclick="cancel();">
+                            Cancelar Inscrição
                         </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="buy_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Comprar</h5>
-            <button type="button" class="btn btn-primary" id="close_buy_modal" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                        <img src="/resources/static/images/qr_code.png" style="width: 300px; border-radius: 16px;">
-                    </div>
-                    <div class="col-sm-4 col-md-4 d-flex justify-content-center align-items-center">
-                        <label class="">Apenas aponte a câmera de seu celular para se registrar no evento!</label>
                     </div>
                 </div>
             </div>

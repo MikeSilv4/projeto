@@ -9,9 +9,8 @@ class Events(models.Model):
     final_date = models.DateField("dtfinalevento", null=False)
     initial_hour = models.TimeField("hrinicialevento", null=False)
     final_hour = models.TimeField("hrfinalevento", null=False)
-    min_participants = models.IntegerField("numinimoparticipante", null=True)
     max_participants = models.IntegerField("numaximoparticipante", null=True)
-    num_participants= models.IntegerField("nuparticipantes", null=True)
+    num_participants= models.IntegerField("nuparticipantes", null=True, default=0)
     enrollment_value = models.DecimalField("vlinscricaoevento", max_digits=10, decimal_places=2, null=False)
     location = models.TextField("txlocalevento", null=False)
 

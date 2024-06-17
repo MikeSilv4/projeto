@@ -64,7 +64,6 @@ function get_data() {
     const enrollment_value = document.getElementById('valor_form').value;
     const initial_hour = document.getElementById('initial_hour_form').value;
     const final_hour = document.getElementById('final_hour_form').value;
-    const min_participants = document.getElementById('min_participants_form').value;
     const max_participants = document.getElementById('max_participants_form').value;
     const location = document.getElementById('loc_form').value;
     const num_participants = 0;

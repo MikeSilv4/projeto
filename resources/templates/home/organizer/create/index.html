@@ -1,0 +1,10 @@
+{% extends 'utils/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'home/organizer/create/main_content.html' %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/home/create_organizer.js' %}"></script>
+{% endblock %}

@@ -1,5 +1,6 @@
 #template_backgound {background-color: #120a16;}
 
+
 #configuration_select {
     -webkit-appearance: none; /* Safari e Chrome */
     -moz-appearance: none; /* Firefox */
@@ -28,7 +29,7 @@ a{
 
 body{
     font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
+    background-color: #120a16;
 }
 
 .conteudo_centro{
@@ -221,12 +222,12 @@ section .header{
     margin-bottom: 1rem;
 }
 
-.features .card a{
+.features .card .list a{
     color: #fff;
     transition: all 0.3s ease;
 }
 
-.features .card a:hover{
+.features .card .list a:hover{
     color: #1e40af;
 }
 
@@ -349,14 +350,14 @@ footer .column h4{
     font-weight: 500;
 }
 
-footer .column > a{
+footer .column .list > a{
     display: block;
     color: #ffffff;
     margin-bottom: 1rem;
     transition: all 0.3s ease;
 }
 
-footer .column > a:hover{
+footer .column .list > a:hover{
     color: #1d4ed8;
 }
 

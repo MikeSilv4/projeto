@@ -7,11 +7,13 @@ from rest_framework.permissions import IsAuthenticated
 from autentication.models import CustomUserManager, CustomUser
 from autentication.models import Organizer
 from rest_framework import status
-
+import datetime
+from home.models import UserEvents
+from rest_framework.decorators import action
 
 class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventAllFieldsSerializer
-    queryset =  Events.objects.all()
+    queryset =  Events.objects.filter(final_date__gte=datetime.date.today())
     permission_classes = [IsAuthenticated]
     
     def create(self, request, *args, **kwargs):
@@ -28,3 +30,12 @@ class EventViewSet(viewsets.ModelViewSet):
             return Response({'data' : serializer.data}, status=status.HTTP_200_OK)
         
         return Response({'Something went wrong'}, status=status.HTTP_400_BAD_REQUEST) 
+
+    @action(detail=False, methods=['get'])
+    def user_events(self, request, *args, **kwargs):
+        user_events = UserEvents.objects.filter(user_id=request.user.pk)
+        user_events = [i.event_id for i in user_events]
+        events = self.queryset.filter(pk__in=user_events)
+        serializer = self.serializer_class(events, many=True)
+
+        return Response({'data' : serializer.data}, status=status.HTTP_200_OK)
