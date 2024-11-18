@@ -17,8 +17,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'autentication.CustomUser'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'mike.silva@grupocpcon.com' # conta gmail remetente
-EMAIL_HOST_PASSWORD = 'D5U7EPP3RVsempay'
+EMAIL_HOST_USER = '' # conta gmail remetente
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
